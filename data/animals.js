@@ -1,68 +1,20 @@
 module.exports = [
   {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
+    book_title: 'bessie',
+    did_read : true,
+    scale: 3,
+    discription:'he'
   },
   {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
+    book_title: 'jumpy',
+    did_read : true,
+    scale: 4,
+    discription:'he'
   },
   {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
-  {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
-  {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
-  {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
-  {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
-  {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
-  {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
-  {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
-  {
-    year: 2019,
-    BookTitle: 'mybook',
-    didRead: true,
-    scale: 3, 
-  },
+    book_title: 'spot',
+    did_read : true,
+    scale: 10,
+    discription:'he'
+  }
 ];
