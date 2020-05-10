@@ -1,14 +1,68 @@
 module.exports = [
   {
-    name: 'bessie',
-    cool_factor: 3,
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
   },
   {
-    name: 'jumpy',
-    cool_factor: 4,
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
   },
   {
-    name: 'spot',
-    cool_factor: 10,
-  }
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
+  {
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
+  {
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
+  {
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
+  {
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
+  {
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
+  {
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
+  {
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
+  {
+    year: 2019,
+    BookTitle: 'mybook',
+    didRead: true,
+    scale: 3, 
+  },
 ];
