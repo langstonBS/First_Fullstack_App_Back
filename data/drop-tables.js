@@ -3,13 +3,14 @@ const client = require('../lib/client');
 run();
 
 async function run() {
+  await client.connect();
 
   try {
-    await client.connect();
+    
     
     await client.query(`
             DROP TABLE IF EXISTS users CASCADE;
-            DROP TABLE IF EXISTS animals;
+            DROP TABLE IF EXISTS books;
         `);
 
     console.log('drop tables complete');

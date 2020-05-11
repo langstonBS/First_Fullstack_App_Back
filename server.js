@@ -9,8 +9,14 @@ const app = require('./lib/app');
 
 const PORT = process.env.PORT || 7890;
 
-app.get('/animals', async(req, res) => {
-  const data = await client.query('SELECT * from animals');
+app.get('/books', async(req, res) => {
+  const data = await client.query('SELECT * from books');
+
+  res.json(data.rows);
+});
+
+app.get('/books:id', async(req, res) => {
+  const data = await client.query('SELECT id FROM books');
 
   res.json(data.rows);
 });
