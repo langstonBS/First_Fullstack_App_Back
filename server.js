@@ -15,10 +15,9 @@ app.get('/books', async(req, res) => {
   res.json(data.rows);
 });
 
-app.get('/books:id', async(req, res) => {
-  const data = await client.query('SELECT id FROM books');
-
-  res.json(data.rows);
+app.get('/books/:id', async(req, res) => {
+  const data = await client.query('SELECT book_title.id, scale.id, discription.id FROM books WHERE books.id = $1 ', [req.params.id]);
+  res.json(data.rows[0]);
 });
 
 app.listen(PORT, () => {
