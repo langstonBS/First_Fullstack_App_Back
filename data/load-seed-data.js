@@ -10,17 +10,19 @@ async function run() {
 
   try {
 
+    await client.connect();
+
     await Promise.all(
       genreData.map(genre => {
         return client.query(`
                     INSERT INTO genre (book_genre)
                     VALUES ($1);
                 `,
-        [genre.book_genre]);
+        [genre.book_genre]); 
       }));
+ 
     
-    
-    await client.connect();
+   
 
     const users = await Promise.all(
       usersData.map(user => {
@@ -40,10 +42,10 @@ async function run() {
     await Promise.all(
       animals.map(animal => {
         return client.query(`
-                    INSERT INTO books (book_title, did_read,  scale, discription, genre_id, owner_id)
+                    INSERT INTO books (book_title, did_read,  scale, discription, genre, owner_id)
                     VALUES ($1, $2, $3, $4, $5, $6);
                 `,
-        [animal.book_title, animal.did_read, animal.scale, animal.discription, animal.book_genre, user.id]);
+        [animal.book_title, animal.did_read, animal.scale, animal.discription, animal.genre, user.id]);
       })
     );
     

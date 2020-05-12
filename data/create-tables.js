@@ -26,7 +26,7 @@ async function run() {
                     did_read BOOLEAN NOT NULL,
                     scale INTEGER NOT NULL,
                     discription VARCHAR(512),
-                    genre_id INTEGER NOT NULL REFERENCES genre(id),
+                    genre INTEGER NOT NULL REFERENCES genre(id),
                     owner_id INTEGER NOT NULL REFERENCES users(id)
                     
             );

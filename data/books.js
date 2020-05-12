@@ -4,20 +4,20 @@ module.exports = [
     did_read : true,
     scale: 3,
     discription: 'he',
-    genre_id: 2
+    genre: 2
   },
   {
     book_title: 'CATS',
     did_read : false,
     scale: 4,
     discription: 'he',
-    genre_id: 1
+    genre: 1
   },
   {
     book_title: 'HATS',
     did_read : true,
     scale: 10,
     discription:'he',
-    genre_id: 3
+    genre: 3
   }
 ];
