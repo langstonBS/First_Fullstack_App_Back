@@ -14,8 +14,7 @@ async function run() {
       genreData.map(genre => {
         return client.query(`
                     INSERT INTO genre (book_genre)
-                    VALUES ($1)
-                    RETURNING *;
+                    VALUES ($1);
                 `,
         [genre.book_genre]);
       }));
