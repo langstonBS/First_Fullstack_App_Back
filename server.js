@@ -10,36 +10,46 @@ const app = require('./lib/app');
 const PORT = process.env.PORT || 7890;
 
 app.get('/books', async(req, res) => {
-  const data = await client.query(`
-  SELECT books.id, books.book_title, books.did_read, books.scale, books.discription, users.email
+  try {
+    const data = await client.query(`
+  SELECT books.id, books.book_title, books.did_read, books.scale, books.discription, genre.book_genre, users.email
   FROM books
-  JOIN users
-  ON books.owner_id = users.id
+  JOIN users ON books.owner_id = users.id
+  JOIN genre ON genre.id = books.genre
   `);
-  res.json(data.rows);
+    res.json(data.rows);
+  } catch(e) {
+    console.error(e);
+    res.json(e);
+  }
 });
 
 
 app.get('/books/:id', async(req, res) => {
-  const id = req.params.id;
-  const data = await client.query(`
-  SELECT books.id, books.book_title, books.did_read, books.scale, books.discription, users.email
+  try {
+    const id = req.params.id;
+    const data = await client.query(`
+  SELECT books.id, books.book_title, books.did_read, books.scale, books.discription, genre.book_genre, users.email
   FROM books
-  JOIN users
-  ON books.owner_id = users.id
+  JOIN users ON books.owner_id = users.id
+  JOIN genre ON genre.id = books.genre
   WHERE books.id =$1`
-  , [id]
-  );
+    , [id]
+    );
   
-  res.json(data.rows[0]);
+    res.json(data.rows[0]);
+  } catch(e) {
+    console.error(e);
+    res.json(e);
+  }
 });
 
 app.post('/books/', async(req, res) => {
   try {
     const data = await client.query(`
-  INSERT INTO  books (book_title, did_read, scale, discription, owner_id)
- VALUES ($1,$2,$3,$4,$5)
- RETURNING *;`,
+    INSERT INTO  books (book_title, did_read, scale, discription, genre, owner_id)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *;`,
     [req.body.book_title, req.body.did_read, req.body.scale, req.body.discription, req.body.owner_id]
     );
     res.json(data);
@@ -49,6 +59,33 @@ app.post('/books/', async(req, res) => {
   }
 });
 
+app.delete('/books/:id', async(req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await client.query(`
+    DELETE FROM books WHERE id = $1;`,
+    [id]);
+    res.json(data);
+  } catch(e) {
+    console.error(e);
+    res.json(e);
+  }
+});
+
+app.put('/books/:did_read:id', async(req, res) => {
+  try {
+    console.log(req.params.email);
+    const data = await client.query(`
+    UPDATE books
+    SET did_read = 'true'
+    WHERE id = '5'
+    RETURNING *;`);
+    res.json(data);
+  } catch(e) {
+    console.error(e);
+    res.json(e);
+  }
+});
 
 
 app.listen(PORT, () => {
