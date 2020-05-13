@@ -72,14 +72,21 @@ app.delete('/books/:id', async(req, res) => {
   }
 });
 
-app.put('/books/:did_read:id', async(req, res) => {
+app.put('/books/:id:did_read', async(req, res) => {
   try {
-    console.log(req.params.email);
+    console.log(req.params.id);
+    let read = req.perams.did_read;
+    if (read) {
+      read = false;
+    } else {
+      read = true;
+    }
     const data = await client.query(`
     UPDATE books
-    SET did_read = 'true'
-    WHERE id = '5'
-    RETURNING *;`);
+    SET did_read = 1$
+    WHERE id = $2
+    RETURNING *;`,
+    [read, req.params.id]);
     res.json(data);
   } catch(e) {
     console.error(e);

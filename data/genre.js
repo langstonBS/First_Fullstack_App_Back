@@ -8,4 +8,10 @@ module.exports = [
   {
     book_genre: 'french',
   },
+  {
+    book_genre: 'refrance',
+  },
+  {
+    book_genre: 'kids',
+  },
 ];
