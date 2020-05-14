@@ -1,6 +1,7 @@
 const client = require('../lib/client');
 // import our seed data:
-const animals = require('./animals.js');
+const animals = require('./books.js');
+const genreData = require('./genre.js');
 const usersData = require('./users.js');
 
 run();
@@ -8,7 +9,20 @@ run();
 async function run() {
 
   try {
+
     await client.connect();
+
+    await Promise.all(
+      genreData.map(genre => {
+        return client.query(`
+                    INSERT INTO genre (book_genre)
+                    VALUES ($1);
+                `,
+        [genre.book_genre]); 
+      }));
+ 
+    
+   
 
     const users = await Promise.all(
       usersData.map(user => {
@@ -22,14 +36,16 @@ async function run() {
     );
       
     const user = users[0].rows[0];
+    
+ 
 
     await Promise.all(
       animals.map(animal => {
         return client.query(`
-                    INSERT INTO animals (year, BookTitle, didRead, user_id , scale)
+                    INSERT INTO books (book_title, did_read,  scale, discription, genre, owner_id)
                     VALUES ($1, $2, $3, $4, $5, $6);
                 `,
-        [animal.year, animal.BookTitle, animal.didRead, user.id, animal.scale]);
+        [animal.book_title, animal.did_read, animal.scale, animal.discription, animal.genre, user.id]);
       })
     );
     
